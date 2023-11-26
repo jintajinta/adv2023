@@ -104,3 +104,12 @@ rule "マッチ開始時にBOT追加":
     createDummy(Hero.MCCREE, Team.2, 4, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
     createDummy(Hero.MCCREE, Team.2, 5, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
 
+
+rule "botが死んだときの処理":
+    @Event playerDied
+    @Condition eventPlayer.isDummy() == true
+
+    eventPlayer.teleport(vect(random.randint(-15, 15), 0, random.randint(-15, 15)))
+    eventPlayer.resurrect()
+    eventPlayer.setHealth(22.5)
+    heal(getLivingPlayers(Team.1),null,10)
