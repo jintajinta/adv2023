@@ -97,3 +97,10 @@ rule "生きている間はHPが減り続ける":
         wait(0.1)
 
         
+rule "マッチ開始時にBOT追加":
+    createDummy(Hero.MCCREE, Team.2, 1, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
+    createDummy(Hero.MCCREE, Team.2, 2, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
+    createDummy(Hero.MCCREE, Team.2, 3, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
+    createDummy(Hero.MCCREE, Team.2, 4, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
+    createDummy(Hero.MCCREE, Team.2, 5, vect(random.randint(-15, 15), 0, random.randint(-15, 15)), vect(0, 0, 0))
+
