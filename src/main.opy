@@ -78,6 +78,7 @@ settings {
                 "enableAbility1": false,
                 "health%": 10,
                 "enableAbility2": false,
+                "enableHeadshotsOnly": true,
                 "enablePrimaryFire": false,
                 "enableSecondaryFire": false,
                 "enableUlt": false
@@ -96,7 +97,7 @@ playervar maxScore 1
 
 rule "生きている間はHPが減り続ける":
     while true:
-        damage(getLivingPlayers(Team.1),null,5)
+        damage(getLivingPlayers(Team.1),null,8)
         wait(0.1)
 
         
