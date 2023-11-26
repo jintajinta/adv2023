@@ -91,3 +91,9 @@ settings {
     }
 }
 
+rule "生きている間はHPが減り続ける":
+    while true:
+        damage(getLivingPlayers(Team.1),null,1)
+        wait(0.1)
+
+        
