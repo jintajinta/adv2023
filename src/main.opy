@@ -96,7 +96,7 @@ playervar maxScore 1
 
 rule "生きている間はHPが減り続ける":
     while true:
-        damage(getLivingPlayers(Team.1),null,1)
+        damage(getLivingPlayers(Team.1),null,5)
         wait(0.1)
 
         
@@ -115,7 +115,7 @@ rule "botが死んだときの処理":
     eventPlayer.teleport(vect(random.randint(-15, 15), 0, random.randint(-15, 15)))
     eventPlayer.resurrect()
     eventPlayer.setHealth(22.5)
-    heal(getLivingPlayers(Team.1),null,10)
+    heal(getLivingPlayers(Team.1),null,50)
 
 rule "キルをとった時の処理":
     @Event playerDealtFinalBlow
