@@ -91,6 +91,9 @@ settings {
     }
 }
 
+playervar score 0
+playervar maxScore 1
+
 rule "生きている間はHPが減り続ける":
     while true:
         damage(getLivingPlayers(Team.1),null,1)
@@ -113,3 +116,24 @@ rule "botが死んだときの処理":
     eventPlayer.resurrect()
     eventPlayer.setHealth(22.5)
     heal(getLivingPlayers(Team.1),null,10)
+
+rule "キルをとった時の処理":
+    @Event playerDealtFinalBlow
+    @Condition eventPlayer.isDummy() == false
+
+    eventPlayer.score += 1
+    
+    if eventPlayer.score > eventPlayer.maxScore:
+        eventPlayer.maxScore = eventPlayer.score
+
+rule "プレイヤーが死んだときの処理":
+    @Event playerDied
+    @Condition eventPlayer.isDummy() == false
+
+    eventPlayer.score = 0
+
+
+rule "HUD":
+    @Event eachPlayer
+    
+    hudText(eventPlayer, "", "スコア:{0}".format(eventPlayer.maxScore), null, HudPosition.RIGHT, 0, Color.WHITE, Color.WHITE, Color.WHITE, HudReeval.VISIBILITY_AND_STRING, SpecVisibility.DEFAULT)
